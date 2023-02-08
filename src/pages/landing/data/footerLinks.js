@@ -12,7 +12,6 @@ const  footerLinks = [
     "Resources",
     "Advertising", 
     "Marketing", 
-    "Advertising",
     "Twitter for Business", 
     "Developers", 
     "Directory Settings",  

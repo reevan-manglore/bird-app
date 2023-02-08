@@ -4,7 +4,7 @@ function emailValidator(email){
 }
 
 function userNameValidator(userName){
-    const userNamePattern = /[\w\d_]{3,}/g;
+    const userNamePattern = /^[\w\d_]{3,}$/gm;
     return userNamePattern.test(userName);
 }
 

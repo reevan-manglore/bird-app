@@ -1,9 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, { StrictMode } from 'react'
+import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+
+root.render(
+	<StrictMode>
+		<App />
+	</StrictMode>
+);
 
 // Hot Module Replacement (HMR) - Remove this snippet to remove HMR.
 // Learn more: https://www.snowpack.dev/#hot-module-replacement

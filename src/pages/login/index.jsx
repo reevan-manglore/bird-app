@@ -25,11 +25,15 @@ function index() {
       setValidity(temp);
 
       if (!userNameValidator(userName)) {
-        setValidity({ ...inputValidity, "userName": false })
+        setValidity(prev=>{
+          return {...prev, "userName": false }
+        });
         return;
       }
       if (!passwordValidator(password)) {
-        setValidity({ ...inputValidity, "password": false })
+        setValidity(prev=>{
+          return {...prev, "password": false }
+        });
         return;
       }
     }
@@ -37,7 +41,7 @@ function index() {
     return (
       <section className='h-screen w-screen bg-background grid place-content-center '>
         <div className='px-16 py-8   rounded-lg bg-card '>
-          <h2 className='text-4xl font-semibold text-white'>Login Your Account</h2>
+          <h2 className='text-4xl font-semibold text-white'>Login To Your Account</h2>
           <form onSubmit={onFormSubmit} className="mt-8 space-y-4">
   
             <FloatingFormField

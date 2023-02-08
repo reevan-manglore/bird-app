@@ -23,25 +23,34 @@ function index() {
     e.preventDefault();
 
     //reset isValid object to trues
-    const temp = {};//just for perfomrance optimization inssted oc calling setState multipple times i batched it
-    for (let key in inputValidity) {
+    let temp = {};//just for perfomrance optimization inssted oc calling setState multipple times i batched it
+    for (const  key in inputValidity) {
       temp[key] = true;
     }
     setValidity(temp);
-
-   
+  
     if (!emailValidator(email)) {
-      setValidity({ ...inputValidity, "email": false })
+      setValidity(prev=>{
+        return {...prev, "email": false }
+      });
+     
       return;
     }
     if (!userNameValidator(userName)) {
-      setValidity({ ...inputValidity, "userName": false })
+      setValidity(prev=>{
+        return {...prev, "userName": false }
+      });
+   
       return;
     }
     if (!passwordValidator(password)) {
-      setValidity({ ...inputValidity, "password": false })
+      setValidity(prev=>{
+        return {...prev, "password": false }
+      });
+      
       return;
     }
+
   }
 
   return (
