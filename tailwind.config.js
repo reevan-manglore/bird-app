@@ -11,7 +11,7 @@ module.exports = {
         "hover":"#22303C",
         "primaryText":"#FFFFFF",
         "secondaryText":"#8899A6",
-      }
+      },
     },
   },
   plugins: [],

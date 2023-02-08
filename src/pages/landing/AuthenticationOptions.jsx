@@ -17,12 +17,12 @@ function AuthenticationOptions() {
             <div className='my-4 w-fit '>
                 <button className='bg-primary w-full px-8 py-2 flex justify-center items-center rounded-full  text-white active:scale-95'>
                     <AiOutlineGoogle className="text-lg mr-2 " />
-                    <span className='font-bold'>Sign up with google</span>
+                    <span className='font-bold'>Register Using google</span>
                 </button>
 
                 <Link to= "/register" className='bg-white w-full px-8 py-2 flex justify-center items-center rounded-full mt-3  text-black active:scale-95'>
                     <AiOutlineMail className="text-lg mr-2 " />
-                    <span className='font-bold'>Sign up with email</span>
+                    <span className='font-bold'>Register Using  email</span>
                 </Link>
                 <p className='text-slate-600 max-w-xs ml-2.5 mt-3 text-xs'>
                     By signing up, you agree to the terms of
@@ -38,7 +38,7 @@ function AuthenticationOptions() {
                 <p className='text-lg text-white font-bold mt-3'>Already have an account</p>
 
                 <Link to="/login" className='bg-gray-700 w-full inline-block text-center  px-8 py-2 text-sm  rounded-full mt-3  text-primary active:scale-95'>
-                    <span className='font-bold'>Sign In</span>
+                    <span className='font-bold'>Login</span>
                 </Link>
             </div>
 

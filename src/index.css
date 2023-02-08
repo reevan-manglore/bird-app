@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .floating-label-input label {
+        @apply absolute z-10 text-base transition-all cursor-text;
+    }    
+
+    .floating-label-input:focus-within label, .floating-label-input input:not(:placeholder-shown) + label {
+        @apply text-xs -translate-y-4 text-slate-400;
+    }
+
+    
+ 
+
+    .floating-label-input input:not(:placeholder-shown)  {
+        @apply mt-0.5;
+    }
+
+}
