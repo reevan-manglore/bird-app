@@ -1,6 +1,8 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react'
+
+import { Link, useNavigate } from 'react-router-dom';
 import FloatingFormField from '../../components/FloatingFormField';
+import { AuthContext } from '../../context/AuthContext.jsx';
 
 import { emailValidator, userNameValidator, passwordValidator } from '../../utils/inputValidators';
 
@@ -11,12 +13,19 @@ function index() {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+  const { isLoggedIn, register } = useContext(AuthContext)
   const [inputValidity, setValidity] = useState({
     "email": true,
     "userName": true,
     "password": true,
   });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/dashboard", { replace: true })
+    }
+  }, [])
 
 
   const onFormSubmit = (e) => {
@@ -24,31 +33,36 @@ function index() {
 
     //reset isValid object to trues
     let temp = {};//just for perfomrance optimization inssted oc calling setState multipple times i batched it
-    for (const  key in inputValidity) {
+    for (const key in inputValidity) {
       temp[key] = true;
     }
     setValidity(temp);
-  
+
     if (!emailValidator(email)) {
-      setValidity(prev=>{
-        return {...prev, "email": false }
+      setValidity(prev => {
+        return { ...prev, "email": false }
       });
-     
+
       return;
     }
     if (!userNameValidator(userName)) {
-      setValidity(prev=>{
-        return {...prev, "userName": false }
+      setValidity(prev => {
+        return { ...prev, "userName": false }
       });
-   
+
       return;
+
     }
     if (!passwordValidator(password)) {
-      setValidity(prev=>{
-        return {...prev, "password": false }
+      setValidity(prev => {
+        return { ...prev, "password": false }
       });
-      
       return;
+    }
+
+    const isRegistartionSuccess =  register({ userName, password });
+    if(isRegistartionSuccess){
+      navigate("/dashboard",{replace:true});
     }
 
   }
