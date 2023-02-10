@@ -17,6 +17,7 @@ function AuthProvider({children}){
         setLoginStatus(true);
         setUserName(previouslyLoggedInUser["userName"]);
     },[]);
+
    
 
     function register({userName,password}){

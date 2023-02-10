@@ -1,6 +1,9 @@
 import { useContext, useEffect, useState } from 'react'
-import { Link,useNavigate } from 'react-router-dom';
+import { Link,Navigate,useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import Alert from '../../components/Alert'
+import { useAlert } from "../../hooks/useAlert"
+
 
 
 import { userNameValidator, passwordValidator } from '../../utils/inputValidators';
@@ -16,13 +19,9 @@ function index() {
     "password": true,
   });
 
-  const navigate  = useNavigate();
+  const [alert, showAlert,hideCurrentAlert] = useAlert();
+  const navigate = useNavigate();
 
-  useEffect(()=>{
-    if(isLoggedIn){
-      navigate("/dashboard",{replace:true})
-    }
-  },[])
 
 
   const onFormSubmit = (e) => {
@@ -47,10 +46,17 @@ function index() {
     if(isLoginSuccess){
       navigate("/dashboard",{replace:true});
     }
+    else{
+      hideCurrentAlert();
+      showAlert("Invalid Credentials");
+      
+    }
   }
 
   return (
+    isLoggedIn?<Navigate to="/dashboard" replace = {true} />:
     <section className='h-screen w-screen bg-background grid place-content-center '>
+      <Alert message={alert.message} shouldShowAlert = {alert.isAlertShown} />
       <div className='px-16 py-8   rounded-lg bg-card '>
         <h2 className='text-4xl font-semibold text-white'>Login To Your Account</h2>
         <form onSubmit={onFormSubmit} className="mt-8 space-y-4">
