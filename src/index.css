@@ -18,4 +18,8 @@
         @apply mt-0.5;
     }
 
+    .scroolbar-hidden::-webkit-scrollbar {
+        display: none;
+      }
+
 }

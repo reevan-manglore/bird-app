@@ -1,13 +1,50 @@
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
+import TweetBox from "./Components/TweetBox";
+import TweetFeedTile from "./Components/TweetFeedTile";
+
 function ContentBar() {
-  const {logout}  = useContext(AuthContext);
+  const {logout,userName}  = useContext(AuthContext);
   return (
-    <main className='px-3 py-6 bg-background grid place-content-center h-screen'>
-      <h1 className='text-6xl text-white'>Dashboard Page</h1>
-      <button type='button' className='text-white mt-4 px-4 py-2 rounded-sm bg-primary' onClick={()=>showAlert(`User Aleredy Exits `)}>Click ME</button>
-      <button type='button' className='text-white mt-2 px-4 py-2 rounded-sm bg-red-500' onClick={()=>logout()}>Logout</button>
+    <main className=' pt-6 bg-background h-screen overflow-y-scroll scroolbar-hidden border-r border-slate-500'>
+      <p className='text-white text-xl font-semibold px-2'>Home</p>
+      <TweetBox/>
+      <TweetFeedTile
+       userName={userName}
+       profilePhoto = {`https://api.dicebear.com/5.x/initials/svg?seed=${userName}&backgroundColor=1CF2B5&size=32&radius=50`}
+       message = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum minus rerum magni debitis velit iusto illo exercitationem est, culpa, commodi quidem voluptates, architecto doloremque. Vero modi eum repudiandae eligendi voluptate?       "
+      />
+      <TweetFeedTile
+       userName={userName}
+       profilePhoto = {`https://api.dicebear.com/5.x/initials/svg?seed=${userName}&backgroundColor=1CF2B5&size=32&radius=50`}
+       message = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum minus rerum magni debitis velit iusto illo exercitationem est, culpa, commodi quidem voluptates, architecto doloremque. Vero modi eum repudiandae eligendi voluptate?       "
+      />
+      <TweetFeedTile
+       userName={userName}
+       profilePhoto = {`https://api.dicebear.com/5.x/initials/svg?seed=${userName}&backgroundColor=1CF2B5&size=32&radius=50`}
+       message = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum minus rerum magni debitis velit iusto illo exercitationem est, culpa, commodi quidem voluptates, architecto doloremque. Vero modi eum repudiandae eligendi voluptate?       "
+      />
+      <TweetFeedTile
+       userName={userName}
+       profilePhoto = {`https://api.dicebear.com/5.x/initials/svg?seed=${userName}&backgroundColor=1CF2B5&size=32&radius=50`}
+       message = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum minus rerum magni debitis velit iusto illo exercitationem est, culpa, commodi quidem voluptates, architecto doloremque. Vero modi eum repudiandae eligendi voluptate?       "
+      />
+      <TweetFeedTile
+       userName={userName}
+       profilePhoto = {`https://api.dicebear.com/5.x/initials/svg?seed=${userName}&backgroundColor=1CF2B5&size=32&radius=50`}
+       message = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum minus rerum magni debitis velit iusto illo exercitationem est, culpa, commodi quidem voluptates, architecto doloremque. Vero modi eum repudiandae eligendi voluptate?       "
+      />
+      <TweetFeedTile
+       userName={userName}
+       profilePhoto = {`https://api.dicebear.com/5.x/initials/svg?seed=${userName}&backgroundColor=1CF2B5&size=32&radius=50`}
+       message = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum minus rerum magni debitis velit iusto illo exercitationem est, culpa, commodi quidem voluptates, architecto doloremque. Vero modi eum repudiandae eligendi voluptate?       "
+      />
+      <TweetFeedTile
+       userName={userName}
+       profilePhoto = {`https://api.dicebear.com/5.x/initials/svg?seed=${userName}&backgroundColor=1CF2B5&size=32&radius=50`}
+       message = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum minus rerum magni debitis velit iusto illo exercitationem est, culpa, commodi quidem voluptates, architecto doloremque. Vero modi eum repudiandae eligendi voluptate?       "
+      />
     </main>
   )
 }
