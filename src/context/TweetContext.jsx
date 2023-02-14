@@ -1,10 +1,11 @@
-import { createContext,useState,useEffect } from "react";
+import { createContext } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
+import { dummytweets } from "../data/dummyTweets";
 const TweetContext = createContext({});
 
 function TweetProvider({children}){
-    const [posts,storePost]  = useLocalStorage({key:"posts",initialValue:[]});
+    const [posts,storePost]  = useLocalStorage({key:"posts",initialValue:dummytweets});
 
     function createPost({author,message}){
        
@@ -36,8 +37,6 @@ function TweetProvider({children}){
 
     function deletePost(postId){
         const filterdPosts = posts.filter(post=>post.postID!=postId);
-        console.log(`deleted post is ${postId} and ${posts}`)
-        console.log(filterdPosts);
         storePost(filterdPosts);
     }
     
@@ -45,7 +44,6 @@ function TweetProvider({children}){
         const editedPost =  posts.map(post=>{
             if(post.postID === postId){
                 const temp = new Set(post.likes);
-                console.log(temp.has(userName));
                 temp.has(userName)?temp.delete(userName):temp.add(userName);
                 return {
                         ...post,

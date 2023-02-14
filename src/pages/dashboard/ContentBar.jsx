@@ -26,7 +26,7 @@ function ContentBar() {
             key={post.postID}
             authorName={post.postAuthor}
             message = {post.contents}
-            createdOn = {post.createdOn}
+            createdOn = {new Date(post.createdOn)}
             likeCount = {post.likes.length}
             isLikedByCurrentUser = {post.likes.includes(userName)}
             onPostEdited = {(msg)=>editPost(post.postID,msg)}

@@ -1,5 +1,5 @@
 import React from 'react'
-import footerLinks from './data/footerLinks.js'
+import footerLinks from '../../data/footerLinks'
 
 function Footer() {
   return (

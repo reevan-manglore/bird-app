@@ -4,6 +4,8 @@ import { AiFillEdit, AiFillDelete, AiOutlineSave, AiOutlineClose } from "react-i
 import { BsChat, BsArrowRepeat, BsHeart, BsHeartFill } from "react-icons/bs";
 import { IoShareOutline } from "react-icons/io5";
 
+import { formatTimeAgo } from '../../../utils/formatTimeAgo';
+
 function TweetFeedTile({ authorName, message, createdOn, likeCount, isLikedByCurrentUser, onPostEdited, onDeleteButtonPress, onLikeButtonPressed }) {
     const [editPostChecked, setEditPost] = useState(false);
     const messageBoxRef = useRef();
@@ -27,7 +29,7 @@ function TweetFeedTile({ authorName, message, createdOn, likeCount, isLikedByCur
                         <div className=' flex items-center space-x-3'>
                             <p className='text-white font-semibold'>{authorName}</p>
                             <p className='text-slate-400 text-sm '>@{authorName}</p>
-                            <p className='text-slate-400 text-sm '>19h ago</p>
+                            <p className='text-slate-400 text-sm '>{formatTimeAgo(createdOn)}</p>
                         </div>
                         {authorName == userName ?
                             <div>
@@ -87,7 +89,12 @@ function TweetFeedTile({ authorName, message, createdOn, likeCount, isLikedByCur
                             >
                                 {message}
                             </textarea>
-                                : message
+                                : message.split( /([#@]\w+)/g).map(itm=>{
+                                    if(itm.startsWith("#") || itm.startsWith("@")){
+                                        return <span className='text-primary-500'>{itm}</span>
+                                    }
+                                    return itm;
+                                })
                         }
                     </div>
                 </div>
